@@ -41,7 +41,9 @@ def print_instance_ids(ec2_client: Any) -> None:
     instances: List[Dict[str, Any]] = describe_instances(ec2_client)
 
     # Extract instance IDs from the response
-    instance_ids: List[str] = [instance["InstanceId"] for instance in instances]
+    instance_ids = []
+    for instance in instances:
+        instance_ids.append(instance["InstanceId"])
 
     # Print each instance ID
     for instance_id in instance_ids:
